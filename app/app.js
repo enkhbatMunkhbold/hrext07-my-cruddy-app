@@ -1,3 +1,4 @@
+// var randomWords = require('random-words');
 /*
 Init app
 interact with DOM
@@ -8,24 +9,49 @@ interact with localstorage
 $(document).ready(function(){
   // this is where we jquery
   //var keyData = 'ourKey'; // going to need to make this dynamic?
+  function randRGB(){
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+   }    
 
-
-  $('.btn-add').on('click', function(e){
+  $('#btn_start').on('click', function(e){
     console.log(e);
-    var keyData = $('.input-key').val();
-    var valueData = $('.input-value').val();
-    // write to db
-    localStorage.setItem(keyData, valueData);
-    // read from db
-    var displayText = keyData + ' | ' + localStorage.getItem(keyData);
-    // this only displays the last one? might want to switch to html
-    // and append a div
-    // <div class="display-data-item" data-keyValue="keyData">valueData</div>
-    // if you use backticks ` you can use ${templateLiterals}
-    // TODO make this vars make sense across the app
-    $('.container-data').html('<div class="display-data-item" data-keyValue="'+ keyData +'">'+valueData+'</div>');
-    $('.input-key').val('');
-    $('.input-value').val('');
+    function setBackGroundColors(){
+      $('.box').each(function() {
+        $(this).css('background-color', randRGB());        
+      });
+    }
+    
+    // var randWords = randomWords({min: 5, max: 10});
+    var tt=setInterval(function(){startTime()},200);
+    var counter = 1;
+
+    function startTime()
+    {
+      if(counter == 20) {
+        clearInterval(tt);
+      } else {        
+        counter++;
+      }
+      setBackGroundColors();
+    }
+    
+    // var keyData = $('.input-key').val();
+    // var valueData = $('.input-value').val();
+    // // write to db
+    // localStorage.setItem(keyData, valueData);
+    // // read from db
+    // var displayText = keyData + ' | ' + localStorage.getItem(keyData);
+    // // this only displays the last one? might want to switch to html
+    // // and append a div
+    // // <div class="display-data-item" data-keyValue="keyData">valueData</div>
+    // // if you use backticks ` you can use ${templateLiterals}
+    // // TODO make this vars make sense across the app
+    // $('.container-data').html('<div class="display-data-item" data-keyValue="'+ keyData +'">'+valueData+'</div>');
+    // $('.input-key').val('');
+    // $('.input-value').val('');
   });
 
 
