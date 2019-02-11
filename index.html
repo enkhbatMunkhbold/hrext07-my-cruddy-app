@@ -25,15 +25,46 @@ container for the response-feedback (start with alert)
 </head>
 <body>
 
-<div class="container-main">
-  <header>My Cruddy App</header>
+<div class="container-main" id="main-box">  
   <div class="container-form">
-    <input type="text" class="input-key" placeholder="enter key">
-    <input type="text" class="input-value" placeholder="enter value">
-    <button class="btn-add">Submit</button>
-    <button class="btn-update">Update</button>
+    <div class="title">WHEELS OF FORTUNE</div>    
+    <div class='instruction'>Guess The First Two Letters and Guess A Whole Word</div>
+    <div id='box_conainer'>        
+      <div class='box' id='box1' style="background-color:#6dd3ce;"></div>
+      <div class='box' id='box2' style="background-color:#c8e9a0;"></div>
+      <div class='box' id='box3' style="background-color:#f7a278;"></div>
+      <div class='box' id='box4' style="background-color:#a13d63;"></div>
+      <div class='box' id='box5' style="background-color:#351e29;"></div> 
+      <div class='box' id='box6' style="background-color:#6dd3ce;"></div>
+      <div class='box' id='box7' style="background-color:#c8e9a0;"></div>
+      <div class='box' id='box8' style="background-color:#f7a278;"></div>
+      <div class='box' id='box9' style="background-color:#a13d63;"></div>
+      <div class='box' id='box10' style="background-color:#351e29;"></div> 
+      <div class='box' id='box11' style="background-color:#6dd3ce;"></div>
+      <div class='box' id='box12' style="background-color:#c8e9a0;"></div> 
+      <div class='box' id='box13' style="background-color:#f7a278;"></div>
+      <div class='box' id='box14' style="background-color:#a13d63;"></div>
+      <div class='box' id='box15' style="background-color:#351e29;"></div> 
+      <div class='box' id='box16' style="background-color:#6dd3ce;"></div>    
+    </div>
+    <div>
+      <div class='start_or_end'>
+        <button class='button' id='btn_start'>START</button>
+        <button class='button' id='btn_end'>END</button>
+      </div> 
+    </div>
+    <div class="search_key">
+      <input type="text" class="guess" id='first_guess' placeholder="first guess">
+      <input type="text" class="guess" id='second_guess' placeholder="second guess">      
+      <button class="btn-add">Submit</button>
+    </div>
+       
+    <!-- <div class="search_value">
+       <input type="text" class="input-value" placeholder="enter value">
+       <button class="btn-update">Update</button>
+    </div>    
     <button class="btn-delete">Delete</button>
-    <button class="btn-clear">Clear</button>
+    <button class="btn-clear">Clear</button> -->
   </div>
   <div class="container-data"></div>
 </div>
