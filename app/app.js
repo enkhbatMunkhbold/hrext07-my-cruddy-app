@@ -42,21 +42,25 @@ $(document).ready(function(){
     {
       if(counter == 20) {
         clearInterval(tt);
+        setLetters();
       } else {        
         counter++;
       }
       setBackGroundColors();
     }
 
-    var randWord = randomWord(words);
-    var wordArray = randWord.split('');
+    function setLetters(){
+      var randWord = randomWord(words);
+      var wordArray = randWord.split('');
 
-    for(var i = 0; i < wordArray.length; i++){
-      var boxNum = i + 4; 
-      $('#box').removeClass('hidden');     
-      $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
-            
+      for(var i = 0; i < wordArray.length; i++){
+        var boxNum = i + 4; 
+        $('#box' + boxNum).text(wordArray[i]);   
+        // $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+              
+      }
     }
+    
     
     // var keyData = $('.input-key').val();
     // var valueData = $('.input-value').val();
