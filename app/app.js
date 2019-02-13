@@ -9,12 +9,23 @@ interact with localstorage
 $(document).ready(function(){
   // this is where we jquery
   //var keyData = 'ourKey'; // going to need to make this dynamic?
+  var $container_form = $('.container-form');
   function randRGB(){
     var r = Math.floor(Math.random() * 256);
     var g = Math.floor(Math.random() * 256);
     var b = Math.floor(Math.random() * 256);
     return 'rgb(' + r + ', ' + g + ', ' + b + ')';
-   }    
+   }  
+   
+   var words = ['escapology', 'brightwork', 'verkrampte', 'protectrix', 'nudibranch', 'grandchild', 'newfangled',
+                 'flugelhorn', 'mythologer', 'pluperfect', 'jellygraph', 'quickthorn', 'rottweiler', 'technician',
+                 'cowpuncher', 'middlebrow', 'jackhammer', 'triphthong', 'wunderkind', 'dazzlement', 'jabberwock',
+                 'witchcraft', 'pawnbroker', 'thumbprint', 'motorcycle', 'cryptogram', 'torchlight', 'bankruptcy'];
+    
+    function randomWord(arr){
+      var randNum = Math.floor(Math.random() * words.length);
+      return arr[randNum];
+    }  
 
   $('#btn_start').on('click', function(e){
     console.log(e);
@@ -23,8 +34,7 @@ $(document).ready(function(){
         $(this).css('background-color', randRGB());        
       });
     }
-    
-    // var randWords = randomWords({min: 5, max: 10});
+  
     var tt=setInterval(function(){startTime()},200);
     var counter = 1;
 
@@ -36,6 +46,13 @@ $(document).ready(function(){
         counter++;
       }
       setBackGroundColors();
+    }
+
+    var randWord = randomWord(words);
+    var wordArray = randWord.split('');
+
+    for(var i = 0; i < wordArray.length; i++){
+      
     }
     
     // var keyData = $('.input-key').val();
@@ -54,6 +71,9 @@ $(document).ready(function(){
     // $('.input-value').val('');
   });
 
+  $('.btn_end').on('click', function(e) {
+    $container_form.html('');
+  })
 
   // update db
     // need to expand when  more than 1 item is added
@@ -70,5 +90,5 @@ $(document).ready(function(){
     localStorage.clear();
     $('.container-data').text('');
   });
-
+  
 });
