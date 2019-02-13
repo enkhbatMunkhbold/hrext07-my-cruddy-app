@@ -23,7 +23,7 @@ $(document).ready(function(){
                  'witchcraft', 'pawnbroker', 'thumbprint', 'motorcycle', 'cryptogram', 'torchlight', 'bankruptcy'];
     
     function randomWord(arr){
-      var randNum = Math.floor(Math.random() * words.length);
+      var randNum = Math.floor((Math.random() * words.length) + 0);
       return arr[randNum];
     }  
 
@@ -52,7 +52,10 @@ $(document).ready(function(){
     var wordArray = randWord.split('');
 
     for(var i = 0; i < wordArray.length; i++){
-      
+      var boxNum = i + 4; 
+      $('#box').removeClass('hidden');     
+      $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+            
     }
     
     // var keyData = $('.input-key').val();
