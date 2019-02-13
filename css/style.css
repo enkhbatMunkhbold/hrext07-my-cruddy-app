@@ -77,6 +77,13 @@ input{
 }
 
 .box{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: Arial Black,Arial Bold,Gadget,sans-serif;
+	text-transform: uppercase;
+	font-size: 55px;
+	color: white;
 	height: 100px;
 	width: 100px;
 	float: left;
