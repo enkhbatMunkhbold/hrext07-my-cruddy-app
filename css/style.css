@@ -22,7 +22,7 @@
 	background-color: #ffffff;
 	margin-bottom: 10%;
 	margin-top: 100px;
-	width: 84.1%;
+	width: 89.14%;
 }
 
 .search_key{
@@ -77,16 +77,17 @@ input{
 }
 
 .box{
+	border: solid black;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: center;	
 	font-family: Arial Black,Arial Bold,Gadget,sans-serif;
 	text-transform: uppercase;
 	font-size: 55px;
 	color: white;
 	height: 100px;
 	width: 100px;
-	float: left;
+	float: left;	
 }
 
 .start_or_end{
@@ -99,7 +100,7 @@ input{
 }
 
 .button{	
-	color: white;	/
+	color: white;	
 	text-decoration: none;
 	font-family: Arial Black,Arial Bold,Gadget,sans-serif;
 	display: inline-block;
