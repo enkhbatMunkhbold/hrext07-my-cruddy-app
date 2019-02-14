@@ -51,6 +51,7 @@ $(document).ready(function(){
         eraseLetters();       
       }                 
     } 
+
     function eraseLetters(){      
       for(var i = 0; i < wordArray.length; i++){
         var boxNum = i + 4;
@@ -71,6 +72,16 @@ $(document).ready(function(){
         $keyBox.css('background-color', '#80bfff');             
       }
     } 
+
+    $('#btn_end').on('click', function (e){      
+      for(var i = 0; i < wordArray.length; i++){
+        var boxNum = i + 4;
+        var $keyBox = $('#box' + boxNum);
+        $keyBox.text(wordArray[i]);   
+        $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+        $keyBox.css('background-color', '#d24dff');
+      }
+    })
     
     $('.btn-add').on('click', function(){
       console.log('+++++++++')
@@ -90,7 +101,7 @@ $(document).ready(function(){
             $keyBox.css('background-color', '#d24dff');
           }          
         }  
-      }
+      }      
     })    
     
     // var keyData = $('.input-key').val();
