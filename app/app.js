@@ -53,30 +53,32 @@ $(document).ready(function(){
     function setLetters(){
       for(var i = 0; i < wordArray.length; i++){
         var boxNum = i + 4;
-        var keyBox = '#box' + boxNum; 
+        // var keyBox = '#box' + boxNum; 
+        var keyBox = wordArray[i];
         var $keyBox = $('#box' + boxNum);
         console.log(keyBox)
         localStorage.setItem(keyBox, wordArray[i]);
-        $(keyBox).css('background-color', '#80bfff');             
+        $keyBox.css('background-color', '#80bfff');             
       }
     } 
     
-    $('.btn-add').on('click', function(e){
+    $('.btn-add').on('click', function(){
       console.log('+++++++++')
-      console.log(e);
+      // console.log(e);
       var firstGuess = $('#first_guess').val();
       var secondGuess = $('#second_guess').val();
-
-      for(var i = 0; i < wordArray.length; i++){
-        if(firstGuess === wordArray[i]){
-          $('#box' + boxNum).text(wordArray[i]);   
-          $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>"); 
-        } 
-        if(secondGuess === wordArray[i]){
-          $('#box' + boxNum).text(wordArray[i]);   
-          $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
-        }
+      console.log(firstGuess)
+      console.log(secondGuess)
+      
+      if(localStorage.hasOwnProperty(firstGuess)){        
+        $('#box' + boxNum).text(wordArray[i]);   
+        $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
       }
+
+      if(localStorage.hasOwnProperty(secondGuess)){
+        $('#box' + boxNum).text(wordArray[i]);   
+        $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+      }      
     }) 
    
     
