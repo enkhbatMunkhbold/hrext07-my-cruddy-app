@@ -28,6 +28,7 @@ $(document).ready(function(){
     }  
 
   $('#btn_start').on('click', function(e){
+    localStorage.clear();    
     var randWord = randomWord(words);
     var wordArray = randWord.split('');
     function setBackGroundColors(){
@@ -45,19 +46,28 @@ $(document).ready(function(){
         clearInterval(tt);
         setLetters();
       } else {        
-        counter++;
+        counter++;        
         setBackGroundColors(); 
-      }           
-    }   
+        eraseLetters();       
+      }                 
+    } 
+    function eraseLetters(){      
+      for(var i = 0; i < wordArray.length; i++){
+        var boxNum = i + 4;
+        var $keyBox = $('#box' + boxNum);
+        $keyBox.html("<div class='box' id='box" + boxNum + "'></div>");
+        $keyBox.css('background-color', randRGB());                
+      }  
+    }  
 
     function setLetters(){
       for(var i = 0; i < wordArray.length; i++){
         var boxNum = i + 4;
         // var keyBox = '#box' + boxNum; 
-        var keyBox = wordArray[i];
+        var key = wordArray[i];
         var $keyBox = $('#box' + boxNum);
-        console.log(keyBox)
-        localStorage.setItem(keyBox, wordArray[i]);
+        console.log(key)
+        localStorage.setItem(key, wordArray[i]);
         $keyBox.css('background-color', '#80bfff');             
       }
     } 
@@ -75,8 +85,8 @@ $(document).ready(function(){
           var boxNum = i + 4;
           var $keyBox = $('#box' + boxNum);
           if(firstGuess === wordArray[i] || secondGuess === wordArray[i]){
-            $('#box' + boxNum).text(wordArray[i]);   
-            $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+            $keyBox.text(wordArray[i]);   
+            $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
             $keyBox.css('background-color', '#d24dff');
           }          
         }  
