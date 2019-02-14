@@ -69,16 +69,30 @@ $(document).ready(function(){
       var secondGuess = $('#second_guess').val();
       console.log(firstGuess)
       console.log(secondGuess)
-      
-      if(localStorage.hasOwnProperty(firstGuess)){        
-        $('#box' + boxNum).text(wordArray[i]);   
-        $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+
+      if(localStorage.hasOwnProperty(firstGuess)){
+        for(var i = 0; i < wordArray.length; i++){
+          var boxNum = i + 4;
+          var $keyBox = $('#box' + boxNum);
+          if(firstGuess === wordArray[i] || secondGuess === wordArray[i]){
+            $('#box' + boxNum).text(wordArray[i]);   
+            $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+            $keyBox.css('background-color', '#d24dff');
+          }          
+        }  
       }
 
-      if(localStorage.hasOwnProperty(secondGuess)){
-        $('#box' + boxNum).text(wordArray[i]);   
-        $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
-      }      
+      // if(localStorage.hasOwnProperty(secondGuess)){
+      //   for(var i = 0; i < wordArray.length; i++){
+      //     var boxNum = i + 4;
+      //     var $keyBox = $('#box' + boxNum);
+      //     if(secondGuess === wordArray[i]){
+      //       $keyBox.text(wordArray[i]);   
+      //       $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+      //       $keyBox.css('background-color', '#d24dff');
+      //     }          
+      //   }  
+      // }      
     }) 
    
     
