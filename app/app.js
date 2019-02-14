@@ -81,20 +81,7 @@ $(document).ready(function(){
           }          
         }  
       }
-
-      // if(localStorage.hasOwnProperty(secondGuess)){
-      //   for(var i = 0; i < wordArray.length; i++){
-      //     var boxNum = i + 4;
-      //     var $keyBox = $('#box' + boxNum);
-      //     if(secondGuess === wordArray[i]){
-      //       $keyBox.text(wordArray[i]);   
-      //       $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
-      //       $keyBox.css('background-color', '#d24dff');
-      //     }          
-      //   }  
-      // }      
-    }) 
-   
+    })    
     
     // var keyData = $('.input-key').val();
     // var valueData = $('.input-value').val();

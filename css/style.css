@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	background-color: #DCDCDC;
-	height: 882px;	
+	/*height: 882px;*/	
 }
 
 .title{
@@ -20,17 +20,24 @@
 
 .container-form{	
 	background-color: #ffffff;
-	margin-bottom: 10%;
+	margin-bottom: 11%;
 	margin-top: 100px;
 	width: 89.14%;
 }
 
-.search_key{
+.first_two_guesses{
 	display: flex;
 	align-items: center;	
 	justify-content: space-evenly;
 	height: 115px;
-	/*margin-top: 0%;*/
+	background-color: #C4FAA0;
+}
+
+.word_guesses{
+	display: flex;
+	align-items: center;	
+	justify-content: space-evenly;
+	height: 115px;
 	background-color: #C4FAA0;
 }
 
