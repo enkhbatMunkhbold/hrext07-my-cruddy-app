@@ -80,6 +80,8 @@ $(document).ready(function(){
         $keyBox.text(wordArray[i]);   
         $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
         $keyBox.css('background-color', '#d24dff');
+        $('.first_two_guesses').show();
+        $('.word_guesses').hide();
       }
     })
     
@@ -95,6 +97,8 @@ $(document).ready(function(){
         for(var i = 0; i < wordArray.length; i++){
           var boxNum = i + 4;
           var $keyBox = $('#box' + boxNum);
+          $('.first_two_guesses').hide();
+          $('.word_guesses').show();
           if(firstGuess === wordArray[i] || secondGuess === wordArray[i]){
             $keyBox.text(wordArray[i]);   
             $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
