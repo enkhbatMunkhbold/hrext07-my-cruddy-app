@@ -28,13 +28,14 @@ $(document).ready(function(){
     }  
 
   $('#btn_start').on('click', function(e){
-    console.log(e);
+    var randWord = randomWord(words);
+    var wordArray = randWord.split('');
     function setBackGroundColors(){
       $('.box').each(function() {
         $(this).css('background-color', randRGB());        
-      });
+      });      
     }
-  
+
     var tt=setInterval(function(){startTime()},200);
     var counter = 1;
 
@@ -45,22 +46,39 @@ $(document).ready(function(){
         setLetters();
       } else {        
         counter++;
-      }
-      setBackGroundColors();
-    }
+        setBackGroundColors(); 
+      }           
+    }   
 
     function setLetters(){
-      var randWord = randomWord(words);
-      var wordArray = randWord.split('');
+      for(var i = 0; i < wordArray.length; i++){
+        var boxNum = i + 4;
+        var keyBox = '#box' + boxNum; 
+        var $keyBox = $('#box' + boxNum);
+        console.log(keyBox)
+        localStorage.setItem(keyBox, wordArray[i]);
+        $(keyBox).css('background-color', '#80bfff');             
+      }
+    } 
+    
+    $('.btn-add').on('click', function(e){
+      console.log('+++++++++')
+      console.log(e);
+      var firstGuess = $('#first_guess').val();
+      var secondGuess = $('#second_guess').val();
 
       for(var i = 0; i < wordArray.length; i++){
-        var boxNum = i + 4; 
-        $('#box' + boxNum).text(wordArray[i]);   
-        // $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
-              
+        if(firstGuess === wordArray[i]){
+          $('#box' + boxNum).text(wordArray[i]);   
+          $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>"); 
+        } 
+        if(secondGuess === wordArray[i]){
+          $('#box' + boxNum).text(wordArray[i]);   
+          $('#box' + boxNum).html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+        }
       }
-    }
-    
+    }) 
+   
     
     // var keyData = $('.input-key').val();
     // var valueData = $('.input-value').val();
