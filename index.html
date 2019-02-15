@@ -48,19 +48,23 @@ container for the response-feedback (start with alert)
       <div class='box' id='box16' style="background-color:#6dd3ce;"></div>    
     </div>
     <div>
+      <div class='message_mask'></div>
+      <div class='message' style='display: none;'>CONGRATULATIONS!!</div>
+    </div> 
+    <div>
       <div class='start_or_end'>
-        <button class='button' id='btn_start'>START</button>
-        <button class='button' id='btn_end'>END</button>
+        <button type='button' class='button' id='btn_start'>START</button>
+        <button type='button' class='button' id='btn_end'>END</button>
       </div> 
-    </div>
+    </div>    
     <div class="first_two_guesses">
       <input type="text" class="guess" id='first_guess' placeholder="first guess">
       <input type="text" class="guess" id='second_guess' placeholder="second guess">      
-      <button class="btn-add">Submit</button>
+      <button type='button' class="btn-add">Submit</button>
     </div>
     <div class='word_guesses' style='display: none;'>
-      <input type='text' class='letter_guess' placeholder='letter or word'>
-      <button type='btn-guess'>Submit</button>
+      <input type='text' class='guess' id='word_or_letter' placeholder='letter or word'>
+      <button type='button' class='btn-guess'>Submit</button>
     </div>
        
     <!-- <div class="search_value">

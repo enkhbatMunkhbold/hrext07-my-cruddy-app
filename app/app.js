@@ -27,21 +27,21 @@ $(document).ready(function(){
       return arr[randNum];
     }  
 
-  $('#btn_start').on('click', function(e){
-    localStorage.clear();    
-    var randWord = randomWord(words);
-    var wordArray = randWord.split('');
     function setBackGroundColors(){
       $('.box').each(function() {
         $(this).css('background-color', randRGB());        
       });      
     }
 
+  $('#btn_start').on('click', function(){
+    localStorage.clear();    
+    var randWord = randomWord(words);
+    var wordArray = randWord.split('');    
+
     var tt=setInterval(function(){startTime()},200);
     var counter = 1;
 
-    function startTime()
-    {
+    function startTime(){
       if(counter == 20) {
         clearInterval(tt);
         setLetters();
@@ -64,7 +64,7 @@ $(document).ready(function(){
     function setLetters(){
       for(var i = 0; i < wordArray.length; i++){
         var boxNum = i + 4;
-        // var keyBox = '#box' + boxNum; 
+      
         var key = wordArray[i];
         var $keyBox = $('#box' + boxNum);
         console.log(key)
@@ -73,7 +73,10 @@ $(document).ready(function(){
       }
     } 
 
-    $('#btn_end').on('click', function (e){      
+    $('#btn_end').on('click', function (){ 
+      localStorage.clear();
+      $('.first_two_guesses').show();
+      $('.word_guesses').hide();         
       for(var i = 0; i < wordArray.length; i++){
         var boxNum = i + 4;
         var $keyBox = $('#box' + boxNum);
@@ -85,20 +88,17 @@ $(document).ready(function(){
       }
     })
     
-    $('.btn-add').on('click', function(){
-      console.log('+++++++++')
-      // console.log(e);
+    $('.btn-add').on('click', function(){        
       var firstGuess = $('#first_guess').val();
-      var secondGuess = $('#second_guess').val();
-      console.log(firstGuess)
-      console.log(secondGuess)
-
-      if(localStorage.hasOwnProperty(firstGuess)){
+      var secondGuess = $('#second_guess').val(); 
+      $('#first_guess').val('');
+      $('#second_guess').val('');      
+      $('.first_two_guesses').hide();
+      $('.word_guesses').show();
+      if(localStorage.hasOwnProperty(firstGuess) || localStorage.hasOwnProperty(secondGuess)){
         for(var i = 0; i < wordArray.length; i++){
           var boxNum = i + 4;
-          var $keyBox = $('#box' + boxNum);
-          $('.first_two_guesses').hide();
-          $('.word_guesses').show();
+          var $keyBox = $('#box' + boxNum);          
           if(firstGuess === wordArray[i] || secondGuess === wordArray[i]){
             $keyBox.text(wordArray[i]);   
             $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
@@ -106,7 +106,43 @@ $(document).ready(function(){
           }          
         }  
       }      
-    })    
+    })
+    
+    $('.btn-guess').on('click', function(){
+      console.log('/////////////////')
+      var guess = $('#word_or_letter').val();
+      $('#word_or_letter').val('');
+      console.log(guess)
+      if(wordArray.includes(guess)){
+        for(var i = 0; i < wordlArray.length; i++){
+          var boxNum = i + 4;
+          var $keyBox = $('#box' + boxNum);
+          if(guess === wordArray[i]){
+            console.log(wordArray[i])
+            $keyBox.text(wordArray[i]);   
+            $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+            $keyBox.css('background-color', '#d24dff');
+          }
+        }
+      } //else {
+    //     var aWord = wordArray.join('');     
+    //     if(guess === aWord){
+    //       for(var i = 0; i < wordArray.length; i++){
+    //         var boxNum = i + 4;
+    //         var $keyBox = $('#box' + boxNum);
+    //         $keyBox.text(wordArray[i]);   
+    //         $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+    //         $keyBox.css('background-color', '#d24dff');
+
+    //         $('.message_mask').hide();
+    //         $('.message').show();            
+    //       }
+    //     }
+    //   }
+
+    })   
+    
+     
     
     // var keyData = $('.input-key').val();
     // var valueData = $('.input-value').val();
@@ -122,7 +158,9 @@ $(document).ready(function(){
     // $('.container-data').html('<div class="display-data-item" data-keyValue="'+ keyData +'">'+valueData+'</div>');
     // $('.input-key').val('');
     // $('.input-value').val('');
-  });
+
+
+  });//button START
 
   $('.btn_end').on('click', function(e) {
     $container_form.html('');

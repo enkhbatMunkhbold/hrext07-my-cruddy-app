@@ -22,7 +22,7 @@
 	background-color: #ffffff;
 	margin-bottom: 11%;
 	margin-top: 100px;
-	width: 89.14%;
+	width: 89.9%;
 }
 
 .first_two_guesses{
@@ -102,7 +102,7 @@ input{
 	align-items: center;
 	justify-content: space-evenly;
 	background-color: #F7F772;
-	margin-top: 6.3%;
+	/*margin-top: 0.2%;*/
 	height: 200px;
 }
 
@@ -125,4 +125,21 @@ input{
 #btn_end{
 	background-color: #ff9980;
 	border: solid #e62e00;
+}
+
+.message_mask{	
+	background-color: #F7F772;
+	margin-top: 6.3%;
+	height: 100px;
+}
+
+.message{
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	font-family: "Alegreya Sans", Calibri, Arial, sans-serif;
+	font-size: 300%;
+	background-color: #F7F772;
+	margin-top: 6.3%;
+	height: 100px;
 }
