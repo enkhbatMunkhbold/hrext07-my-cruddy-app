@@ -34,7 +34,13 @@ $(document).ready(function(){
     }
 
   $('#btn_start').on('click', function(){
-    localStorage.clear();    
+    localStorage.clear(); 
+
+    $('.message_mask').show();
+    $('.message').hide();  
+    $('.first_two_guesses').show();
+    $('.word_guesses').hide();
+
     var randWord = randomWord(words);
     var wordArray = randWord.split('');    
 
@@ -63,18 +69,17 @@ $(document).ready(function(){
 
     function setLetters(){
       for(var i = 0; i < wordArray.length; i++){
-        var boxNum = i + 4;
-      
-        var key = wordArray[i];
-        var $keyBox = $('#box' + boxNum);
-        console.log(key)
+        var boxNum = i + 4;             
+        var key = wordArray[i];         
+        var $keyBox = $('#box' + boxNum); 
+        console.log(key);       
         localStorage.setItem(key, wordArray[i]);
         $keyBox.css('background-color', '#80bfff');             
       }
     } 
 
     $('#btn_end').on('click', function (){ 
-      localStorage.clear();
+      localStorage.clear();   
       $('.first_two_guesses').show();
       $('.word_guesses').hide();         
       for(var i = 0; i < wordArray.length; i++){
@@ -83,8 +88,8 @@ $(document).ready(function(){
         $keyBox.text(wordArray[i]);   
         $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
         $keyBox.css('background-color', '#d24dff');
-        $('.first_two_guesses').show();
-        $('.word_guesses').hide();
+        // $('.first_two_guesses').show();
+        // $('.word_guesses').hide();
       }
     })
     
@@ -106,80 +111,58 @@ $(document).ready(function(){
           }          
         }  
       }      
-    })
+    })    
     
-    $('.btn-guess').on('click', function(){
-      console.log('/////////////////')
+    $('.btn-guess').on('click', function(){      
       var guess = $('#word_or_letter').val();
       $('#word_or_letter').val('');
       console.log(guess)
-      if(wordArray.includes(guess)){
-        for(var i = 0; i < wordlArray.length; i++){
+      if(localStorage.hasOwnProperty(guess) && guess.length === 1){
+        for(var i = 0; i < wordArray.length; i++){
           var boxNum = i + 4;
           var $keyBox = $('#box' + boxNum);
-          if(guess === wordArray[i]){
-            console.log(wordArray[i])
+          if(guess === wordArray[i]){           
             $keyBox.text(wordArray[i]);   
             $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
             $keyBox.css('background-color', '#d24dff');
           }
         }
-      } //else {
-    //     var aWord = wordArray.join('');     
-    //     if(guess === aWord){
-    //       for(var i = 0; i < wordArray.length; i++){
-    //         var boxNum = i + 4;
-    //         var $keyBox = $('#box' + boxNum);
-    //         $keyBox.text(wordArray[i]);   
-    //         $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
-    //         $keyBox.css('background-color', '#d24dff');
+      } else {
+        var aWord = wordArray.join('');     
+        if(guess === aWord){
+          for(var i = 0; i < wordArray.length; i++){
+            var boxNum = i + 4;
+            var $keyBox = $('#box' + boxNum);
+            $keyBox.text(wordArray[i]);   
+            $keyBox.html("<div class='box' id='box" + boxNum + "'>" + wordArray[i] + "</div>");
+            $keyBox.css('background-color', '#d24dff');
 
-    //         $('.message_mask').hide();
-    //         $('.message').show();            
-    //       }
-    //     }
-    //   }
-
-    })   
-    
-     
-    
-    // var keyData = $('.input-key').val();
-    // var valueData = $('.input-value').val();
-    // // write to db
-    // localStorage.setItem(keyData, valueData);
-    // // read from db
-    // var displayText = keyData + ' | ' + localStorage.getItem(keyData);
-    // // this only displays the last one? might want to switch to html
-    // // and append a div
-    // // <div class="display-data-item" data-keyValue="keyData">valueData</div>
-    // // if you use backticks ` you can use ${templateLiterals}
-    // // TODO make this vars make sense across the app
-    // $('.container-data').html('<div class="display-data-item" data-keyValue="'+ keyData +'">'+valueData+'</div>');
-    // $('.input-key').val('');
-    // $('.input-value').val('');
-
-
+            $('.message_mask').hide();
+            $('.message').show();            
+          }
+        }
+      }
+    })  
   });//button START
 
-  $('.btn_end').on('click', function(e) {
-    $container_form.html('');
-  })
+  // $('.btn_end').on('click', function(e) {
+  //   $container_form.html('');
+  // })
 
-  // update db
-    // need to expand when  more than 1 item is added
+  // // update db
+  //   // need to expand when  more than 1 item is added
 
-  // delete item
-  $('.container-data').on('click', '.display-data-item', function(e){
-    console.log(e.currentTarget.dataset.keyvalue);
-    var keyData = e.currentTarget.dataset.keyvalue;
-    localStorage.removeItem(keyData);
-    $('.container-data').text('');
-  });
-  // delete all?
-  $('.btn-clear').click(function(){
-    localStorage.clear();
-    $('.container-data').text('');
-  });
+  // // delete item
+  // $('.container-data').on('click', '.display-data-item', function(e){
+  //   console.log(e.currentTarget.dataset.keyvalue);
+  //   var keyData = e.currentTarget.dataset.keyvalue;
+  //   localStorage.removeItem(keyData);
+  //   $('.container-data').text('');
+  // });
+  // // delete all?
+  // $('.btn-clear').click(function(){
+  //   localStorage.clear();
+  //   $('.container-data').text('');
+  // });
   
 });
